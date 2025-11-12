@@ -11,29 +11,43 @@ function General({general, setgeneral}) {
     setgeneral(form);
     setIsEditing(false);
    }
-   function edit(e){
+   function edit(){
     setForm(general);
     setIsEditing(true);
    }
-   if(isEditing === true){
+    if(isEditing === true){
+        return(
+            <div className="cv-section">
+                <h2>General Information</h2>
+                <div className="form-grid">
+                    <div className="form-group">
+                        <label>Name:</label>
+                        <input name="name" value={form.name} onChange={change} />
+                    </div>
+                    <div className="form-group">
+                        <label>Email:</label>
+                        <input name="email" value={form.email} onChange={change} />
+                    </div>
+                    <div className="form-group form-full-width">
+                        <label>Phone:</label>
+                        <input name="phone" value={form.phone} onChange={change} />
+                    </div>
+                </div>
+                <button className="submitButton" onClick={submit}>Submit</button>
+            </div>
+        )
+    }
     return(
-        <div>
-        <input name="name" value={form.name} onChange={change} />
-        <input name="email" value={form.email} onChange={change} />
-        <input name="phone" value={form.phone} onChange={change} />
-        <button onClick={submit}>Submit</button>
-      </div>
+        <div className="cv-section">
+            <h2>General Information</h2>
+            <div className="display-info">
+                <h3>Name: {general.name}</h3>
+                <h3>Email: {general.email}</h3>
+                <h3>Phone: {general.phone}</h3>
+            </div>
+            <button className="editButton" onClick={edit}>Edit Information</button>
+        </div>
     )
-   }
-   return(
-    <>
-    <h2>General Information</h2>
-    <h3>Name: {general.name}</h3>
-    <h3>Email: {general.email}</h3>
-    <h3>Phone: {general.phone}</h3>
-    <button onClick={edit}>Edit form</button>
-    </>
-
-   )
 
 }  
+export default General;

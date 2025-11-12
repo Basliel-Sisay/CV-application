@@ -11,27 +11,42 @@ function Education({ed, seted}){
         setedit(false);
         seted(form);
     }
-    function edited(e){
+    function edited(){
         setedit(true);
         setForm(ed);
     }
     if(edit === true){
-        return (
-            <>
-            <input name="SchoolName" value={form.SchoolName} onChange={change}/>
-            <input name="titleOfStudy" value={form.titleOfStudy} onChange={change}/>
-            <input name="dateOfStudy" value={form.dateOfStudy} onChange={change}/>
-            <button onClick={submit}>Submit</button>
-            </>
+    return (
+                <div className="cv-section">
+                    <h2>Education Information</h2>
+                    <div className="form-grid">
+                        <div className="form-group form-full-width">
+                            <label>School name:</label>
+                            <input name="SchoolName" value={form.SchoolName} onChange={change}/>
+                        </div>
+                        <div className="form-group form-full-width">
+                            <label>Title of study:</label>
+                            <input name="titleOfStudy" value={form.titleOfStudy} onChange={change}/>
+                        </div>
+                        <div className="form-group">
+                            <label>Date of Study:</label>
+                            <input name="dateOfStudy" value={form.dateOfStudy} onChange={change}/>
+                        </div>
+                    </div>
+                    <button className="submitButton" onClick={submit}>Submit</button>
+                </div>
+            )
+        }
+        return(
+            <div className="cv-section">
+                <h2>Education Information</h2>
+                <div className="display-info">
+                    <h3>School name: {ed.SchoolName}</h3>
+                    <h3>Title of study: {ed.titleOfStudy}</h3>
+                    <h3>Date of study: {ed.dateOfStudy}</h3>
+                </div>
+                <button className="editButton" onClick={edited}>Edit Information</button>
+            </div>
         )
-    }
-    return(
-        <>
-        <h2>Educational Information</h2>
-        <h3>Name: {ed.SchoolNameame}</h3>
-        <h3>Email: {ed.titleOfStudy}</h3>
-        <h3>Phone: {ed.dateOfStudy}</h3>
-        <button onClick={edited}>Edit form</button>
-        </>
-    )
 }
+export default Education;
